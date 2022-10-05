@@ -46,7 +46,8 @@ resource "yandex_compute_instance" "vm-1" {
   }
   resources {
     cores  = 2
-    memory = 2
+    core_fraction = 20 // guaranteed cpu fraction 20%
+    memory = 1
   }
   scheduling_policy {
     preemptible = true
