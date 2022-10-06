@@ -1,4 +1,4 @@
-Creating Jenkins VM
+Creating VPN VM
 ------------------------------
 1. Create file `secret.tfvar`:
 
