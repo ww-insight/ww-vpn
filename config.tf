@@ -21,14 +21,14 @@ locals {
 
 provider "yandex" {
   token     = var.YA_TOKEN
-  cloud_id  = "cloud-ww-bel"
-  folder_id = "b1g1ea8du0rjbjnjl075"
-  zone      = "ru-central1-b"
+  cloud_id  = var.YA_CLOUD
+  folder_id = var.YA_FOLDER
+  zone      = "ru-central1-a"
 }
 ////////////////////////////////////////////   VM-1   ///////////////////////////////////////
-resource "yandex_compute_instance" "vm-1" {
+resource "yandex_compute_instance" "vm-2" {
 
-  name = "ww-vpn"
+  name = "ww-vpn2"
 
   allow_stopping_for_update = true
 
@@ -41,7 +41,7 @@ resource "yandex_compute_instance" "vm-1" {
     }
   }
   network_interface {
-    subnet_id = "e2lcrt85pcpnboln5af9"
+    subnet_id = var.YA_SUBNET
     nat = true
   }
   resources {
@@ -77,7 +77,7 @@ resource "yandex_compute_instance" "vm-1" {
   }
 }
 
-output "external_ip_address_vm_1" {
-  value = yandex_compute_instance.vm-1.network_interface.0.nat_ip_address
+output "external_ip_address_vm_2" {
+  value = yandex_compute_instance.vm-2.network_interface.0.nat_ip_address
 }
 
